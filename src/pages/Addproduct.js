@@ -162,14 +162,17 @@ const Addproduct = () => {
   }, [deletedImageState?.deletedImageId]);
 
   const onSubmit = async (values) => {
+    console.log('on submit');
     values.images = totalImagesSaveDB;
     values.supplierID = supplierID;
+    console.log('values are'+ values);
     try {
       if (getProductId !== undefined) {
         const data = { id: getProductId, productData: values };
         dispatch(updateAProduct(data));
       } else {
-        await dispatch(createProducts(values));
+        console.log('dispactch on submit');
+        dispatch(createProducts(values));
         formik.resetForm();
         setTimeout(() => {
           dispatch(resetState());
@@ -188,28 +191,29 @@ const Addproduct = () => {
   const formik = useFormik({
     enableReinitialize: true,
     initialValues: {
-      title: productName || "",
-      description: productDesc || "",
-      price: productPrice || "",
-      brand: productBrand || "",
-      category: productCategory || "",
-      tags: productTags || "",
-      color: productColor || "",
-      quantity: productQuantity || "",
-      size: productSize || "",
-      weight: productWeight || "",
-      power: productPower || "",
-      lifespan: productLifespan || "",
-      warranty: productWarranty || "",
-      supplierID: supplierID || "",
+      title: productName || "Apple Macbook Pro",
+      description: productDesc || "Apple Macbook Pro",
+      price: productPrice || "200000",
+      brand: productBrand || "Apple",
+      category: productCategory || "Laptop",
+      tags: productTags || "Special",
+      color: productColor || "Black",
+      quantity: productQuantity || "20",
+      size: productSize || "15",
+      weight: productWeight || "1000",
+      power: productPower || "240",
+      lifespan: productLifespan || "8",
+      warranty: productWarranty || "24",
+      supplierID: supplierID || "65c3d95bfd41134f9d0554db",
       images: "",
     },
     validationSchema: schema,
     onSubmit: async (values) => {
       try {
         // Add supplierID to the values object
+        console.log('values 2 is', values);
         values.supplierID = supplierID; // Assuming supplierID is available in your component state or props
-  
+        console.log('values 2 after set is', values);
         // Dispatch createProducts action with the updated values
         await dispatch(createProducts(values));
         
@@ -445,7 +449,7 @@ const Addproduct = () => {
             <option value="">Choose Supplier</option>
             {supplierState &&
               supplierState.map((supplier, index) => (
-                <option key={index} value={supplier.id}>
+                <option key={index} value={supplier._id}>
                   {supplier.name}
                 </option>
               ))}

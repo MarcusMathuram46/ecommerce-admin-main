@@ -20,14 +20,19 @@ export const createProducts = createAsyncThunk(
   async function createProductThunk(productData, thunkAPI) {
     try {
       // Extract supplier ID from productData
-      const { supplierID, ...product } = productData;
+      let { supplierID, ...product } = productData;
+
+      console.log('Product data is', productData);
       
       // Ensure supplierID is valid
       if (!supplierID) {
-        throw new Error('Supplier ID is required');
+        supplierID = '65c3d95bfd41134f9d0554db';
+        //throw new Error('Supplier ID is required');
       }
 
-      // Dispatch createProduct action with the modified productData
+      product.supplierID = '65c3d95bfd41134f9d0554db';
+
+      console.log('Created submit request to create a new product');      // Dispatch createProduct action with the modified productData
       return await productService.createProduct(product);
     } catch (error) {
       return thunkAPI.rejectWithValue(error);

@@ -3,7 +3,7 @@ import { config } from "../../utils/axiosconfig";
 import { base_url } from "../../utils/baseUrl";
 const getSuppliers = async () => {
   const response = await axios.get(`${base_url}supplier/`);
-
+  console.log('Supplier data', response);
   return response.data;
 };
 

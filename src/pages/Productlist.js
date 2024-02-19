@@ -58,7 +58,7 @@ const Productlist = () => {
       action: (
         <>
           <Link to="/" className=" fs-3 text-danger">
-            <BiEdit />
+            
           </Link>
           <Link className="ms-3 fs-3 text-danger" to="/">
             <AiFillDelete />

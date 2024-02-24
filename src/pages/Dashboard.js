@@ -87,13 +87,13 @@ const Dashboard = () => {
     color: ({ type }) => {
       return "#ffd333";
     },
-    label: {
-      position: "middle",
-      style: {
-        fill: "#FFFFFF",
-        opacity: 1,
-      },
-    },
+    // label: {
+    //   position: "absolute",
+    //   style: {
+    //     fill: "#FFFFFF",
+    //     opacity: 1,
+    //   },
+    // },
     xAxis: {
       label: {
         autoHide: true,
@@ -108,6 +108,7 @@ const Dashboard = () => {
         alias: "Income",
       },
     },
+    
   };
   return (
     <div>
